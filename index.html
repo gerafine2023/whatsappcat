@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>בחר את התמונה האהובה עליך</title>
+    
+    <!-- פיתיון ויזואלי לווצאפ - תמונת התצוגה המקדימה -->
+    <meta property="og:title" content="סקר התמונות הגדול! 📸">
+    <meta property="og:description" content="לחץ כאן כדי לבחור את התמונה האהובה עליך">
+    <meta property="og:image" content="https://via.placeholder.com/600x315.png?text=Preview+Image">
+
+    <style>
+        /* עיצוב בסיסי שמרגיש כמו אפליקציה */
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #f0f2f5; /* צבע רקע שמזכיר את ווצאפ */
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .card:active {
+            transform: scale(0.95);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>איזו תמונה הכי יפה?</h2>
+
+    <div class="grid">
+        <!-- אפשרות 1 -->
+        <div class="card" onclick="sendToWhatsApp('תמונת הנוף 🏔️')">
+            <img src="https://via.placeholder.com/150/0000FF/808080 ?Text=Image+1" alt="נוף">
+            <p>נוף</p>
+        </div>
+
+        <!-- אפשרות 2 -->
+        <div class="card" onclick="sendToWhatsApp('תמונת העיר 🏙️')">
+            <img src="https://via.placeholder.com/150/FF0000/FFFFFF?Text=Image+2" alt="עיר">
+            <p>עיר</p>
+        </div>
+    </div>
+
+    <script>
+        function sendToWhatsApp(userChoice) {
+            // החלף במספר שלך עם קידומת בינלאומית (ללא פלוס או אפסים)
+            const myPhoneNumber = "972501234567"; 
+            
+            // יצירת הטקסט שיישלח
+            const textContent = encodeURIComponent("היי! בחרתי ב: " + userChoice);
+            
+            // קסם ה-Deep Link - מחזיר את המשתמש לווצאפ עם הטקסט מוכן
+            window.location.href = `whatsapp://send?phone=${myPhoneNumber}&text=${textContent}`;
+        }
+    </script>
+
+</body>
+</html>
